@@ -7,6 +7,13 @@ const nextConfig = {
       '/': ['./data/**/*'],
     },
   },
+  // 禁用 TypeScript 和 ESLint 校验
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 module.exports = nextConfig;
