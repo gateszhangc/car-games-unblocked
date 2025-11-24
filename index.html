@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survival Race</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>Survival Race</h1>
+            <div class="game-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Coins:</span>
+                    <span id="coin-count" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Players:</span>
+                    <span id="player-count" class="stat-value">1</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="game-area">
+            <canvas id="game-canvas" width="800" height="600"></canvas>
+            <div id="game-over" class="game-over-screen hidden">
+                <h2>Game Over!</h2>
+                <p>You collected <span id="final-coins">0</span> coins!</p>
+                <button id="restart-btn">Play Again</button>
+            </div>
+            <div id="start-screen" class="start-screen">
+                <h2>Survival Race</h2>
+                <p>Navigate the hexagonal arena and be the last survivor!</p>
+                <div class="controls-info">
+                    <p><strong>Controls:</strong></p>
+                    <p>Arrow Keys / A,D - Move left/right</p>
+                    <p>Up Arrow / W / Space - Jump</p>
+                </div>
+                <button id="start-btn">Start Game</button>
+            </div>
+        </div>
+        
+        <div class="game-footer">
+            <div class="car-selector">
+                <span>Select Car:</span>
+                <div class="car-options">
+                    <div class="car-option selected" data-car="0">🚗</div>
+                    <div class="car-option" data-car="1">🚙</div>
+                    <div class="car-option" data-car="2">🏎️</div>
+                    <div class="car-option" data-car="3">🚓</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

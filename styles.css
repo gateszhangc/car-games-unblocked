@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container {
+    width: 100%;
+    max-width: 900px;
+    height: 100vh;
+    max-height: 800px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.game-header {
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #00ff00;
+}
+
+.game-header h1 {
+    font-size: 24px;
+    color: #00ff00;
+    text-shadow: 0 0 10px #00ff00;
+}
+
+.game-stats {
+    display: flex;
+    gap: 20px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #aaa;
+}
+
+.stat-value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #00ff00;
+}
+
+.game-area {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+}
+
+#game-canvas {
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+}
+
+.start-screen, .game-over-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    text-align: center;
+    padding: 20px;
+}
+
+.start-screen h2, .game-over-screen h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #00ff00;
+    text-shadow: 0 0 10px #00ff00;
+}
+
+.controls-info {
+    margin: 20px 0;
+    background: rgba(0, 255, 0, 0.1);
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #00ff00;
+}
+
+.controls-info p {
+    margin: 5px 0;
+}
+
+button {
+    background: #00ff00;
+    color: #000;
+    border: none;
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);
+}
+
+button:hover {
+    background: #00cc00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 255, 0, 0.5);
+}
+
+.game-footer {
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border-top: 2px solid #00ff00;
+    display: flex;
+    justify-content: center;
+}
+
+.car-selector {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.car-options {
+    display: flex;
+    gap: 10px;
+}
+
+.car-option {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #555;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.car-option:hover {
+    border-color: #00ff00;
+    transform: scale(1.1);
+}
+
+.car-option.selected {
+    border-color: #00ff00;
+    background: rgba(0, 255, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .game-container {
+        border-radius: 0;
+        max-height: 100vh;
+    }
+    
+    .game-header h1 {
+        font-size: 20px;
+    }
+    
+    .game-stats {
+        gap: 15px;
+    }
+    
+    .stat-value {
+        font-size: 16px;
+    }
+    
+    #game-canvas {
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
