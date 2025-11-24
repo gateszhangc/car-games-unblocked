@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+
+# 允许访问游戏资源
+Allow: /game.js
+Allow: /sound.js
+Allow: /styles.css
+Allow: /*.html$
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.woff$
+Allow: /*.woff2$
+
+# 站点地图位置
+Sitemap: https://cargamesunblocked.space/sitemap.xml
+
+# 爬虫延迟（可选）
+Crawl-delay: 1
