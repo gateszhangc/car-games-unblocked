@@ -93,6 +93,8 @@ dist
 # Downloaded HTML snapshots
 *.html
 !public/game/survival-race/index.html
+!public/data/*.html
+!public/data/*.html
 
 # Vuepress build output
 .vuepress/dist
