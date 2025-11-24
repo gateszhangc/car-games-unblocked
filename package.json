@@ -1,0 +1,40 @@
+{
+  "name": "car-games-unblocked",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "download": "node scripts/downloadHtml.js",
+    "extract": "node scripts/extractHtml.js",
+    "assets": "node scripts/downloadAssets.js",
+    "assets-all": "node scripts/downloadAllAssets.js",
+    "game": "node scripts/downloadGame.js",
+    "game-assets": "node scripts/downloadGameAssets.js",
+    "original": "node scripts/updateOriginalHtml.js",
+    "capture": "node scripts/captureScreenshots.js",
+    "compare": "node scripts/compareScreenshots.js",
+    "sync-all": "npm run download && npm run extract && npm run assets-all && npm run game && npm run game-assets && npm run original"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "next": "^16.0.3",
+    "pixelmatch": "^7.1.0",
+    "playwright": "^1.56.1",
+    "pngjs": "^7.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.6",
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.17",
+    "typescript": "^5.9.3"
+  }
+}

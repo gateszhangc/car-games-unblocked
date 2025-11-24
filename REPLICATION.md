@@ -1,85 +1,88 @@
-# Site Clone Workflow
+# Survival Race 网站复刻工作流程
 
-This document explains how the project replicates the `https://growagarden-recipes.com/` homepage and `/recipes` page, plus how we validate visual parity. Follow these steps whenever you need to resync the clone or rerun the automated checks.
+本文档说明如何复刻 `https://survival-race.io/` 网站，用于学习研究目的。包括下载网站内容、本地运行以及视觉一致性验证。
 
-## 1. Environment Setup
-- Install dependencies:
-  ```bash
-  npm install
-  ```
-- Download the Playwright Chromium binary:
-  ```bash
-  npx playwright install chromium
-  ```
-
-## 2. Sync the Latest Site Markup
-1. Fetch the live homepage HTML from the repository root:
-   ```powershell
-   (Invoke-WebRequest -Uri https://growagarden-recipes.com/ -UseBasicParsing).Content | Out-File growagarden_home.html -Encoding utf8
-   ```
-2. Fetch the `/recipes` HTML snapshot:
-   ```powershell
-   (Invoke-WebRequest -Uri https://growagarden-recipes.com/recipes -UseBasicParsing).Content | Out-File growagarden_recipes.html -Encoding utf8
-   ```
-3. Extract the `<head>` and `<body>` fragments into the Next.js data directory (the script processes every downloaded snapshot that it knows about):
-   ```bash
-   node scripts/extractHtml.js
-   ```
-4. Regenerate the static homepage snapshot used for baseline comparisons:
-   ```bash
-   node scripts/updateOriginalHtml.js
-   ```
-   This writes the combined markup to `public/original.html`.
-5. Download static assets (CSS, JS files):
-   ```bash
-   node scripts/downloadAssets.js
-   ```
-   This downloads all referenced assets from the original site to `public/assets/` (the union of assets referenced by every stored `<head>` fragment).
-6. Refresh SEO assets (robots.txt, sitemap.xml):
-   ```bash
-   node scripts/updateSeoAssets.js
-   ```
-   The latest versions are saved to `public/robots.txt` and `public/sitemap.xml`.
-
-## 3. Next.js Rendering Notes
-- `app/layout.tsx` now only provides the global `<html>` and `<body>` shell while individual routes handle their own `<head>` fragments.
-- `lib/loadHtmlFragment.ts` centralizes loading any stored fragment from `/data`, so each route can pull whichever file it needs.
-- `components/HeadInjector.tsx` uses `useServerInsertedHTML` to stream stored `<head>` markup into the document during SSR.
-- `app/(home)/page.tsx` and `app/recipes/page.tsx` both rely on those helpers to inject `*-head.html` and render the corresponding `*-body.html` with `dangerouslySetInnerHTML`, allowing the upstream SPA bundle to hydrate identically to the production site.
-- `app/globals.css` only imports Tailwind so the cloned CSS from the source site remains untouched.
-
-## 4. Build Verification
-Compile the project in production mode to make sure everything builds cleanly:
+## 1. 环境设置
+安装项目依赖：
 ```bash
-npm run build
+npm install
 ```
 
-## 5. Screenshot Capture and Pixel Diff
-1. Launch the local server:
+下载 Playwright Chromium 浏览器（用于截图对比）：
+```bash
+npx playwright install chromium
+```
+
+## 2. 同步网站内容
+1. 下载原始网站 HTML：
+   ```bash
+   npm run download
+   ```
+   这会将 https://survival-race.io/ 的 HTML 保存到 `survival-race_home.html`
+
+2. 提取 `<head>` 和 `<body>` 片段到 data 目录：
+   ```bash
+   npm run extract
+   ```
+   生成文件：
+   - `data/home-head.html` - head 内容
+   - `data/home-body.html` - body 内容
+
+3. 下载静态资源（CSS、JS 文件）：
+   ```bash
+   npm run assets
+   ```
+   所有引用的资源会下载到 `public/assets/` 目录
+
+4. 生成完整的静态快照用于基准对比：
+   ```bash
+   npm run original
+   ```
+   生成 `public/original.html` 文件
+
+## 3. Next.js 渲染说明
+- `app/layout.tsx` 提供全局的 `<html>` 和 `<body>` 外壳
+- `lib/loadHtmlFragment.ts` 集中加载 `/data` 目录中的 HTML 片段
+- `components/HeadInjector.tsx` 使用 `useServerInsertedHTML` 在 SSR 期间注入 `<head>` 内容
+- `app/page.tsx` 使用这些工具注入 `home-head.html` 并通过 `dangerouslySetInnerHTML` 渲染 `home-body.html`
+- `app/globals.css` 只导入 Tailwind，保持原始网站的 CSS 不变
+
+## 4. 运行项目
+开发模式：
+```bash
+npm run dev
+```
+访问 http://localhost:3000 查看复刻的网站
+
+生产构建：
+```bash
+npm run build
+npm run start
+```
+
+## 5. 截图对比和像素差异检测
+1. 启动本地服务器（如果还没运行）：
    ```bash
    npm run start
    ```
-2. Capture screenshots (Playwright Chromium, JavaScript disabled, 1440×900 viewport, full page):
-   ```bash
-   node scripts/captureScreenshots.js
-   ```
-   Outputs:
-   - `screenshots/original.png` — remote site capture
-   - `screenshots/clone.png` — local clone capture
-3. Produce the diff overlay and statistics:
-   ```bash
-   node scripts/compareScreenshots.js
-   ```
-   - Prints the number and percentage of differing pixels
-   - Saves `screenshots/diff.png`
-4. Narrow down the differing region (optional):
-   ```bash
-   node scripts/analyzeRawDiff.js
-   ```
-   This reports the bounding box covering all differing pixels for easier inspection.
 
-## 6. Typical Sources of Difference
-- The live site loads ads, analytics, and other dynamic assets, so a small variance (around 2–3%) is normal even with JavaScript disabled.
-- To reduce noise you can block third-party requests before capturing screenshots or compare against `public/original.html`, which mirrors the stored snapshot exactly.
+2. 捕获截图（使用 Playwright Chromium，禁用 JavaScript，1440×900 视口，全页面）：
+   ```bash
+   npm run capture
+   ```
+   生成文件：
+   - `screenshots/original.png` — 原始网站截图
+   - `screenshots/clone.png` — 本地克隆截图
 
-Repeat these steps whenever you refresh the data or want an automated visual regression check on the cloned homepage.
+3. 生成差异对比图和统计数据：
+   ```bash
+   npm run compare
+   ```
+   - 打印不同像素的数量和百分比
+   - 保存 `screenshots/diff.png` 差异图
+
+## 6. 常见差异来源
+- 原始网站加载广告、分析工具等动态内容，即使禁用 JavaScript，通常也会有 2-3% 的小差异
+- 要减少噪音，可以在捕获截图前阻止第三方请求，或直接对比 `public/original.html`
+
+需要刷新数据或进行自动化视觉回归检查时，重复以上步骤即可。
