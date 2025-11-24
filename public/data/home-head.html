@@ -222,15 +222,16 @@ section.game.game__play::before {
   background: var(--panel);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
-  padding: 14px;
+  padding: 10px;
   box-shadow: var(--glow);
 }
 
 .game__related .grid__game--item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px;
+  gap: 0px;
+  padding: 0px;
+  margin: 0px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.02);
@@ -303,13 +304,14 @@ section.game.game__play::before {
 .grid__game {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 14px;
+  gap: 12px;
 }
 
 .grid__game--item {
   background: var(--panel);
   border-radius: var(--radius-md);
-  padding: 12px;
+  padding: 0px;
+  margin: 0px;
   border: 1px solid var(--border);
   box-shadow: var(--glow);
   transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
