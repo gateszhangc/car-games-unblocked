@@ -130,7 +130,7 @@ header {
 }
 
 .header__bar {
-  padding: 14px 0;
+  padding: 14px 40px;
   gap: 16px;
 }
 
@@ -210,9 +210,12 @@ section.game.game__play::before {
 
 .game__play--grid {
   display: grid;
-  grid-template-columns: 240px 1fr 240px;
-  gap: 20px;
-  align-items: start;
+  grid-template-columns: 140px 1fr 240px;
+   
+  margin: 0;
+  padding: 0px;
+  /* margin-left: 0px; */
+  align-items: center;
 }
 
 .game__related {
@@ -233,7 +236,7 @@ section.game.game__play::before {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 4px;
+  padding: 0;
   margin: 0;
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
