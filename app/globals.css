@@ -158,12 +158,44 @@
   margin-bottom: 20px;
 }
 
+.comments-sort {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.comments-sort label {
+  color: var(--muted, #9eb3d4);
+  font-size: 0.9rem;
+}
+
 .comments-sort select {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(9, 16, 26, 0.86);
   border: 1px solid var(--border-strong, rgba(255, 255, 255, 0.16));
   border-radius: 12px;
-  padding: 8px 12px;
+  padding: 10px 16px;
   color: var(--text, #eaf1ff);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  min-width: 120px;
+}
+
+.comments-sort select:hover {
+  border-color: var(--accent-2, #5cb7ff);
+  background: rgba(92, 183, 255, 0.08);
+}
+
+.comments-sort select:focus {
+  outline: none;
+  border-color: var(--accent, #5cf2c7);
+  box-shadow: 0 0 0 3px rgba(92, 242, 199, 0.15);
+}
+
+.comments-sort select option {
+  background: #050b12;
+  color: var(--text, #eaf1ff);
+  padding: 8px;
 }
 
 .comment-form,
