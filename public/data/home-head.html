@@ -298,13 +298,14 @@ section.game.game__play::before {
 .title-karmatic {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  margin-left: 40%;
+  gap: 2px;
   padding: 8px 14px;
-  border-radius: 999px;
+  border-radius: 9px;
   background: linear-gradient(120deg, rgba(92, 183, 255, 0.14), rgba(92, 242, 199, 0.2));
   color: var(--text);
   border: 1px solid var(--border-strong);
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
@@ -401,9 +402,45 @@ footer {
   background: linear-gradient(140deg, var(--accent-2), var(--accent));
   color: #04080f;
   border-radius: 999px;
-  padding: 12px;
+  padding: 12px 18px;
   box-shadow: var(--glow);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+#back-to-top:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(92, 183, 255, 0.35);
+}
+
+#back-to-top .back-to-top__icon {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  align-items: center;
+  justify-content: center;
+}
+
+#back-to-top .back-to-top__icon svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+}
+
+#back-to-top .back-to-top__label {
+  font-size: 0.65rem;
+}
+
 
 .overlay {
   background: rgba(4, 8, 15, 0.65);
@@ -439,3 +476,4 @@ footer {
   }
 }
 </style>
+
