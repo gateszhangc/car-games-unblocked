@@ -15,7 +15,7 @@ export default function HomePage() {
   return (
     <>
       <HeadInjector headHtml={headHtml} />
-      <div dangerouslySetInnerHTML={{ __html: bodyHtml }} />
+      <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: bodyHtml }} />
     </>
   );
 }
