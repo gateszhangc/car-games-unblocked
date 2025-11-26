@@ -59,8 +59,7 @@ export default function ComingSoonPage({ searchParams }: ComingSoonPageProps) {
               <h1>The next version of our site is still loading.</h1>
               <p className="coming-lede">
                 You tried to open <span className="coming-game-name">{gameName}</span> but the entire Car Games Unblocked
-                experience is getting reworked. Some footer buttons and static pages share this placeholder while we
-                finish wiring everything together. Drop your email and we will notify you as soon as new sections go live.
+                experience is getting reworked.  Drop your email and we will notify you as soon as new sections go live.
               </p>
               <p className="coming-note">
                 Thanks for your patience—whether you clicked a game tile, About Us, Contact, or any other link, you are

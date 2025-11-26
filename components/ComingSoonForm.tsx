@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import { useRouter } from "next/navigation";
 import { FormEvent, useMemo, useState } from "react";
 
 interface ComingSoonFormProps {
@@ -10,6 +11,7 @@ export default function ComingSoonForm({ gameName }: ComingSoonFormProps) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const router = useRouter();
 
   const disabled = useMemo(() => status === "success", [status]);
 
@@ -31,6 +33,10 @@ export default function ComingSoonForm({ gameName }: ComingSoonFormProps) {
 
     setStatus("success");
     setErrorMessage("");
+
+    setTimeout(() => {
+      router.push("/");
+    }, 1200);
   }
 
   return (
