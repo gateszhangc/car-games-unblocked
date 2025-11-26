@@ -1,4 +1,5 @@
 import HeadInjector from '@/components/HeadInjector';
+import CommentSection from '@/components/CommentSection';
 import fs from 'fs';
 import path from 'path';
 
@@ -16,6 +17,7 @@ export default function HomePage() {
     <>
       <HeadInjector headHtml={headHtml} />
       <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: bodyHtml }} />
+      <CommentSection />
     </>
   );
 }
