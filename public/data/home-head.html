@@ -117,8 +117,6 @@ a:hover {
    max-width: 85%;
   margin: 0 auto;
   padding: 0 20px;
-
-  /* display: block; */
 }
 
 header {
@@ -224,33 +222,16 @@ section.game.game__play::before {
 }
 
  
-
-.game__play--grid > .game__related,
-.game__play--grid > .throw-ads-160x600 {
-  flex: 0 0 auto;
-}
-
-.game__related--right {
-  order: 4;
-}
-
-.throw-ads-160x600-right {
-  order: 5;
-  margin-left: 0;
-}
-
 .game__related {
-  position: sticky;
-  top: 96px;
   align-self: start;
   background: var(--panel);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
-  padding: 6px 6px 8px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
   box-shadow: var(--glow);
+  justify-content: space-evenly;
 }
 
 .game__related .grid__game--item {
