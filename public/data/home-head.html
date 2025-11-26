@@ -215,13 +215,28 @@ section.game.game__play::before {
 }
 
 .game__play--grid {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-   
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 12px;
   margin: 0;
-  padding: 0px;
-  /* margin-left: 0px; */
-  align-items: center;
+  padding: 0;
+}
+
+ 
+
+.game__play--grid > .game__related,
+.game__play--grid > .throw-ads-160x600 {
+  flex: 0 0 auto;
+}
+
+.game__related--right {
+  order: 4;
+}
+
+.throw-ads-160x600-right {
+  order: 5;
+  margin-left: 0;
 }
 
 .game__related {
@@ -414,7 +429,8 @@ footer {
 
 @media (max-width: 1100px) {
   .game__play--grid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
   }
 
   .game__related {
