@@ -1,1 +1,157 @@
-/* Global styles - keeping minimal to not interfere with cloned site CSS */
+/* Global styles - keeps our custom sections aligned with the imported theme */
+
+.coming-shell {
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 20%, rgba(92, 242, 199, 0.05), transparent 35%),
+    radial-gradient(circle at 80% 0%, rgba(92, 183, 255, 0.08), transparent 28%),
+    #050b12;
+  color: var(--text, #eaf1ff);
+}
+
+.coming-main {
+  margin: 0 auto;
+  padding: 60px 20px 80px;
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.coming-card,
+.coming-list {
+  background: var(--panel, rgba(9, 16, 26, 0.86));
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.08));
+  border-radius: 22px;
+  box-shadow: var(--shadow, 0 20px 40px rgba(0, 0, 0, 0.45));
+  padding: 32px;
+}
+
+.coming-eyebrow {
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-2, #5cb7ff);
+  margin-bottom: 12px;
+}
+
+.coming-lede {
+  color: var(--muted, #9eb3d4);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.coming-note {
+  margin-top: 12px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 1px dashed var(--border, rgba(255, 255, 255, 0.24));
+  background: rgba(92, 183, 255, 0.08);
+  color: var(--muted, #9eb3d4);
+  font-size: 0.95rem;
+}
+
+.coming-game-name {
+  color: var(--accent, #5cf2c7);
+  font-weight: 600;
+}
+
+.coming-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 24px 0;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: rgba(92, 183, 255, 0.12);
+  border: 1px solid var(--border-strong, rgba(255, 255, 255, 0.14));
+}
+
+.coming-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.coming-form__controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.coming-form input {
+  flex: 1;
+  min-width: 220px;
+  border-radius: 12px;
+  border: 1px solid var(--border-strong, rgba(255, 255, 255, 0.18));
+  background: rgba(255, 255, 255, 0.02);
+  padding: 14px;
+  color: var(--text, #eaf1ff);
+}
+
+.coming-form button {
+  border-radius: 12px;
+  border: 0;
+  padding: 0 26px;
+  font-weight: 600;
+  background: linear-gradient(120deg, var(--accent-2, #5cb7ff), var(--accent, #5cf2c7));
+  color: #04080f;
+  cursor: pointer;
+}
+
+.coming-form button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.coming-form__status {
+  min-height: 24px;
+  color: var(--muted, #9eb3d4);
+}
+
+.coming-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.coming-btn {
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong, rgba(255, 255, 255, 0.14));
+  color: var(--text, #eaf1ff);
+  text-decoration: none;
+  background: rgba(92, 242, 199, 0.08);
+}
+
+.coming-btn--ghost {
+  background: transparent;
+}
+
+.coming-list ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted, #9eb3d4);
+  line-height: 1.8;
+}
+
+.coming-header-note {
+  color: var(--muted, #9eb3d4);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 640px) {
+  .coming-card,
+  .coming-list {
+    padding: 24px;
+  }
+
+  .coming-form__controls {
+    flex-direction: column;
+  }
+
+  .coming-form button {
+    width: 100%;
+    padding: 14px;
+  }
+}
