@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "standalone",
   reactStrictMode: true,
-  // 禁用 TypeScript 校验
   typescript: {
     ignoreBuildErrors: true,
   },
